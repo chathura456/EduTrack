@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "187002969622",
+    "firebase_url": "https://edutrack-53b17-default-rtdb.firebaseio.com",
+    "project_id": "edutrack-53b17",
+    "storage_bucket": "edutrack-53b17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187002969622:android:6b353fc47d0c8bde0d1f37",
+        "android_client_info": {
+          "package_name": "com.example.edutrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187002969622-q6hpeor2ti0tdna2satpsjghsvg0gule.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdiR_3qMl-zTFb_qI0hj2BLHMPdTKLbk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187002969622-q6hpeor2ti0tdna2satpsjghsvg0gule.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
