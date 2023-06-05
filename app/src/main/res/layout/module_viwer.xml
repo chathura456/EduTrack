@@ -1,7 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/lblName"
                 android:text="Advanced Maths for computing"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:paddingRight="10dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -43,12 +48,26 @@
                 android:text="Contribute Association"
                 android:gravity="left"
                 android:textStyle="bold"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="5dp"
                 />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Click to upload files"
+                android:gravity="left"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                />
+
+
         </LinearLayout>
+
+
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>
