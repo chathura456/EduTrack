@@ -19,9 +19,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-
-
-
 private lateinit var firebaseAuth:FirebaseAuth
 private lateinit var database: DatabaseReference
 
@@ -29,8 +26,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
-
-
 
         val email = findViewById<EditText>(R.id.email)
         val password = findViewById<EditText>(R.id.password)
