@@ -26,6 +26,7 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:text="Lecture Username" />
+
         <TextView
             android:layout_gravity="right|center"
             android:layout_marginLeft="20dp"
@@ -42,36 +43,142 @@
             android:layout_height="40dp"
             android:layout_alignTop="@id/txtView"/>
 
-
     </LinearLayout>
 
 
 
 
     <!-- Scrollable body with labels for adding semester modules -->
-    <ScrollView
-        android:layout_marginTop="130dp"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_marginTop="110dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fadingEdge="none"
-        android:fillViewport="true" >
+        android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/eventView"
+        <!-- First TextView -->
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to EduTrack"
+            android:textColor="@color/teal_700"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"/>
+
+        <!-- Second TextView -->
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start your jurney"
+            android:textSize="15dp"
+            android:textStyle="bold|italic"/>
+
+        <!-- First row of labels -->
+        <LinearLayout
+            android:layout_margin="30dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="40dp"
-            tools:listitem="@layout/module_viwer"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <!-- First label with image and text -->
+            <LinearLayout
+                android:layout_marginRight="30dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-    </ScrollView>
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/mod" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Access to your modules" />
+
+            </LinearLayout>
+
+            <!-- Second label with image and text -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/assing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View your assingment details" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Second row of labels -->
+        <LinearLayout
+            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Third label with image and text -->
+            <LinearLayout
+                android:layout_marginRight="30dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/sched" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View your lecture Schedule" />
+
+            </LinearLayout>
+
+            <!-- Fourth label with image and text -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/meti" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get lecture metirials" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Use bottom navigation bar"
+            android:textSize="10dp"
+            />
+    </LinearLayout>
 
 
     <!-- Bottom navigation bar with buttons -->
@@ -149,7 +256,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/adbutton"
-                 />
+                />
 
 
         </LinearLayout>
