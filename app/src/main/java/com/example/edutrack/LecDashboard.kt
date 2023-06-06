@@ -63,7 +63,7 @@ class LecDashboard : AppCompatActivity() {
         }
 
         schedulebtn.setOnClickListener {
-            val intent = Intent(this, LecDashboard::class.java)
+            val intent = Intent(this, LecSchedule::class.java)
             intent.putExtra("name",name)
             startActivity(intent)
         }

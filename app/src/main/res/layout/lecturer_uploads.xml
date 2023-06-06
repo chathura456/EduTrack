@@ -23,6 +23,7 @@
         app:srcCompat="@drawable/ic_material" />
 
     <TextView
+        android:textAlignment="center"
         android:id="@+id/evNamelbl"
         android:layout_width="384dp"
         android:layout_height="36dp"
@@ -39,6 +40,7 @@
         app:layout_constraintVertical_bias="0.368" />
 
     <TextView
+        android:textAlignment="center"
         android:id="@+id/evAssoclbl"
         android:layout_width="384dp"
         android:layout_height="36dp"
@@ -67,7 +69,8 @@
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/et_style">
 
             <TextView
                 android:id="@+id/evDesclbl"

@@ -27,9 +27,13 @@ class EventAdapter (private val eventList : ArrayList<Modules>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: EventAdapter.ViewHolder, position: Int) {
+        val photos: IntArray = intArrayOf(R.drawable.img01, R.drawable.img02,R.drawable.img03,R.drawable.img04,R.drawable.ic_maths)
+        val ran = Random()
+        val i = ran.nextInt(photos.size)
         val currentEvent = eventList[position]
         holder.lblEventName.text = currentEvent.ID+ " " + currentEvent.Name
         holder.lblAssociation.text = currentEvent.Year + " "+ currentEvent.Sem
+        holder.eventImg.setImageResource(photos[i])
         // holder.lblDescription.text = currentEvent.descrption
         var eId = currentEvent.ID
 
@@ -45,6 +49,7 @@ class EventAdapter (private val eventList : ArrayList<Modules>) : RecyclerView.A
     class ViewHolder(view : View, clickListner: onItemClickListner) : RecyclerView.ViewHolder(view) {
         val lblEventName : TextView = itemView.findViewById(R.id.lblName)
         val lblAssociation : TextView = itemView.findViewById(R.id.lblAssociation)
+        val eventImg : ImageView = itemView.findViewById(R.id.eventImg)
         //val lblDescription : TextView = itemView.findViewById(R.id.lblDescription)
 
         init {

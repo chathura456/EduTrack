@@ -26,15 +26,9 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:text="Lecture Username" />
-        <TextView
-            android:layout_gravity="right|center"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/txtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:textSize = "10dp" />
+
         <ImageView
+            android:layout_marginLeft="60dp"
             android:layout_gravity="right|center"
             android:id="@+id/logoutbtn"
             android:src="@drawable/logou"
