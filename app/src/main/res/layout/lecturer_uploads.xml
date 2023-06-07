@@ -8,6 +8,7 @@
 
 
 
+
     <ImageView
         android:id="@+id/imgFull"
         android:layout_width="match_parent"
@@ -23,6 +24,7 @@
         app:srcCompat="@drawable/ic_material" />
 
     <TextView
+        android:textAlignment="center"
         android:id="@+id/evNamelbl"
         android:layout_width="384dp"
         android:layout_height="36dp"
@@ -39,6 +41,7 @@
         app:layout_constraintVertical_bias="0.368" />
 
     <TextView
+        android:textAlignment="center"
         android:id="@+id/evAssoclbl"
         android:layout_width="384dp"
         android:layout_height="36dp"
@@ -54,6 +57,7 @@
         app:layout_constraintVertical_bias="0.42" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="376dp"
         android:layout_height="243dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,18 +68,19 @@
         app:layout_constraintVertical_bias="0.694">
 
         <LinearLayout
-            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/et_style"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/evDesclbl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:padding="10dp"
                 android:text="Upload Files"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -86,11 +91,11 @@
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
                 android:id="@+id/btnupload"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:clickable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -99,5 +104,20 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="119dp"
+        android:layout_height="42dp"
+        android:layout_weight="1"
+        android:background="@drawable/clear_style"
+        android:text="Back"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

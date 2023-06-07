@@ -28,6 +28,7 @@
             android:textSize="16sp"
             android:text="Lecture Username" />
 
+
         <ImageView
             android:layout_marginLeft="60dp"
             android:layout_gravity="right|center"
@@ -37,50 +38,70 @@
             android:layout_height="40dp"
             android:layout_alignTop="@id/txtView"/>
 
-
     </LinearLayout>
 
 
+
+
     <!-- Scrollable body with labels for adding semester modules -->
-
-
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_marginTop="110dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="144dp"
-        android:text="Lecture Schedules"
-        android:textSize="18sp"
-        android:textStyle="bold"
-       />
+        android:orientation="vertical">
 
+        <!-- First TextView -->
 
-
-    <ScrollView
-        android:layout_marginTop="130dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:fadingEdge="none"
-        android:fillViewport="true" >
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/eventView"
+        <!-- First row of labels -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="40dp"
-            tools:listitem="@layout/module_viwer"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
-    </ScrollView>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Lecture Schedules"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.452"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.151" />
+
+            <ScrollView
+                android:layout_marginTop="30dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fadingEdge="none"
+                android:fillViewport="true" >
+                <HorizontalScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="321dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TableLayout>
+
+                </HorizontalScrollView>
+            </ScrollView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
     <!-- Bottom navigation bar with buttons -->
@@ -158,7 +179,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/adbutton"
-                 />
+                />
 
 
         </LinearLayout>
