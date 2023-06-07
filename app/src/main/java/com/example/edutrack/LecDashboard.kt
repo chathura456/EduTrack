@@ -24,6 +24,7 @@ class LecDashboard : AppCompatActivity() {
     private lateinit var assing: LinearLayout
     private lateinit var homebtn: ImageView
     private lateinit var logoutbtn: ImageView
+    private lateinit var header: TextView
 
     private lateinit var eventRecyclerView: RecyclerView
     private lateinit var eventLst : ArrayList<Modules>
@@ -52,12 +53,16 @@ class LecDashboard : AppCompatActivity() {
         assing = findViewById(R.id.assingmentbutton)
         homebtn = findViewById(R.id.homebtn)
         logoutbtn = findViewById(R.id.logoutbtn)
+        header = findViewById(R.id.header)
 
         username.text = intent.getStringExtra("name")
         val name=intent.getStringExtra("name")
 
+        header.text=intent.getStringExtra("title")
+
         modulebtn.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Lecture Modules")
             intent.putExtra("name",name)
             startActivity(intent)
         }
@@ -76,12 +81,14 @@ class LecDashboard : AppCompatActivity() {
 
         materialsbtn.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Lecture Materials")
             intent.putExtra("name",name)
             startActivity(intent)
         }
 
         assing.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Assingments")
             intent.putExtra("name",name)
             startActivity(intent)
         }
@@ -124,6 +131,8 @@ class LecDashboard : AppCompatActivity() {
                             intent.putExtra("Name",eventLst[position].Name)
                             intent.putExtra("semester",eventLst[position].Sem)
                             intent.putExtra("year",eventLst[position].Year)
+                            intent.putExtra("title",header.text.toString())
+                            intent.putExtra("name",username.text.toString())
                             startActivity(intent)
                         }
 

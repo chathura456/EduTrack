@@ -38,6 +38,7 @@ class LecSchedule : AppCompatActivity() {
 
         modulebtn.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Lecture Modules")
             intent.putExtra("name",name)
             startActivity(intent)
         }
@@ -56,12 +57,14 @@ class LecSchedule : AppCompatActivity() {
 
         materialsbtn.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Lecture Materials")
             intent.putExtra("name",name)
             startActivity(intent)
         }
 
         assing.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Assingments")
             intent.putExtra("name",name)
             startActivity(intent)
         }
@@ -93,6 +96,7 @@ class LecSchedule : AppCompatActivity() {
         for (i in 0 until 5) {
             val dayTextView = createTextView(getDayName(i), true)
             headerRow.addView(dayTextView)
+            headerRow.setBackgroundResource(R.drawable.tablebackground)
         }
         tableLayout.addView(headerRow)
 
@@ -101,6 +105,7 @@ class LecSchedule : AppCompatActivity() {
             val row = TableRow(this)
             val timeTextView = createTextView(timeSlot, true)
             row.addView(timeTextView)
+            row.setBackgroundResource(R.drawable.rowbackground)
 
             val subjectsForDay = subjects.shuffled().take(5)
             for (subject in subjectsForDay) {

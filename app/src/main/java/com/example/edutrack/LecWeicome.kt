@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.example.crudapp.EventAdapter
 import com.google.firebase.auth.FirebaseAuth
 
 class LecWeicome : AppCompatActivity() {
@@ -37,6 +38,7 @@ class LecWeicome : AppCompatActivity() {
 
         modulebtn.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Lecture Modules")
             intent.putExtra("name",name)
             startActivity(intent)
         }
@@ -55,12 +57,14 @@ class LecWeicome : AppCompatActivity() {
 
         materialsbtn.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Lecture Materials")
             intent.putExtra("name",name)
             startActivity(intent)
         }
 
         assing.setOnClickListener {
             val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title","Upload Assingments")
             intent.putExtra("name",name)
             startActivity(intent)
         }
