@@ -7,6 +7,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -22,7 +23,7 @@ class LecUploads : AppCompatActivity() {
     private lateinit var btnupload : FloatingActionButton
     private lateinit var uri: Uri
     private lateinit var mStorage : StorageReference
-
+    private lateinit var btnback : Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +34,20 @@ class LecUploads : AppCompatActivity() {
         evtName = findViewById(R.id.evNamelbl)
         evtAssoc = findViewById(R.id.evAssoclbl)
         btnupload=findViewById(R.id.btnupload)
+        btnback=findViewById(R.id.btn_back)
 
         mStorage= FirebaseStorage.getInstance().getReference(intent.getStringExtra("moduleId").toString())
 
         setValuesToViews()
+
+        btnback.setOnClickListener{
+            val title=intent.getStringExtra("title").toString()
+            val name=intent.getStringExtra("name").toString()
+            val intent = Intent(this, LecDashboard::class.java)
+            intent.putExtra("title",title)
+            intent.putExtra("name",name)
+            startActivity(intent)
+        }
 
         btnupload.setOnClickListener(View.OnClickListener {
             view: View? ->  val intent = Intent()
@@ -72,6 +83,7 @@ class LecUploads : AppCompatActivity() {
         }
 
     }
+
 
 
 
