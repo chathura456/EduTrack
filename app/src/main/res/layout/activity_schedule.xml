@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Upper bar for displaying lecture username and ID -->
+    <!-- Upper bar for displaying lecture username and ID -->
     <LinearLayout
         android:id="@+id/upperBar"
         android:layout_width="match_parent"
@@ -15,28 +16,29 @@
         android:padding="16dp">
 
         <ImageView
-            android:layout_width="120dp"
+            android:layout_width="190dp"
             android:layout_height="50dp"
-            android:src="@drawable/edutracklogo"/>
+            android:src="@drawable/edutracklogo" />
+
         <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center"
             android:id="@+id/lectureUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="0dp"
+            android:text="Mike David"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:text="Lecture Username" />
+            android:textSize="16sp" />
 
 
         <ImageView
-            android:layout_marginLeft="60dp"
-            android:layout_gravity="right|center"
             android:id="@+id/logoutbtn"
-            android:src="@drawable/logou"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignTop="@id/txtView"/>
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/logou" />
 
     </LinearLayout>
 

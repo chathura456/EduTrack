@@ -34,12 +34,43 @@ class LoginActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+        if(firebaseAuth.currentUser!=null){
+            database= FirebaseDatabase.getInstance().getReference("Users")
+
+            database.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
+                if(it.exists()){
+                    val utype=it.child("Type").value
+                    val name=it.child("Name").value.toString()
+
+                    if (utype.toString().trim()=="{Lecturer=}"){
+                        val intent= Intent(this,LecWeicome::class.java)
+                        intent.putExtra("name",name)
+                        startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(this, "Welcome student page", Toast.LENGTH_LONG)
+                            .show()
+                    }
+                }
+                else{
+                    Toast.makeText(this, "Error", Toast.LENGTH_LONG)
+                        .show()
+                }
+
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed", Toast.LENGTH_LONG)
+                    .show()
+            }
+
+        }
+
         btnsubmit.setOnClickListener {
             if (email.text.toString().trim().isNotEmpty()&&password.text.toString().trim().isNotEmpty())
                 firebaseAuth.signInWithEmailAndPassword(email.text.toString().trim(),password.text.toString().trim()).addOnCompleteListener{
                     if(it.isSuccessful){
                         database= FirebaseDatabase.getInstance().getReference("Users")
-                            database.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
+
+                        database.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
                             if(it.exists()){
                                 val utype=it.child("Type").value
                                 val name=it.child("Name").value.toString()
@@ -52,7 +83,6 @@ class LoginActivity : AppCompatActivity() {
                                 else{
                                     Toast.makeText(this, "Welcome student page", Toast.LENGTH_LONG)
                                         .show()
-
                                 }
                             }
                             else{
@@ -64,9 +94,6 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(this, "Failed", Toast.LENGTH_LONG)
                                 .show()
                         }
-
-
-
                     }
                     else{
                         try {
