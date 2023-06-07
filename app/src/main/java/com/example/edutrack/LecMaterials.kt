@@ -1,6 +1,8 @@
 package com.example.edutrack
 
+import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -8,14 +10,18 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crudapp.EventAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 import java.util.ArrayList
 
-class LecDashboard : AppCompatActivity() {
+class LecMaterials : AppCompatActivity() {
 
     private lateinit var username: TextView
     private lateinit var modulebtn: LinearLayout
@@ -26,8 +32,7 @@ class LecDashboard : AppCompatActivity() {
     private lateinit var logoutbtn: ImageView
     private lateinit var header: TextView
 
-    private lateinit var eventRecyclerView: RecyclerView
-    private lateinit var eventLst : ArrayList<Modules>
+    private lateinit var recyclerView: RecyclerView
     private lateinit var dbRef : DatabaseReference
 
 
@@ -37,12 +42,10 @@ class LecDashboard : AppCompatActivity() {
 
 
 
-        eventRecyclerView = findViewById(R.id.eventView)
-        eventRecyclerView.layoutManager = LinearLayoutManager(this)
-        eventRecyclerView.setHasFixedSize(true)
-        eventLst = arrayListOf<Modules>()
+        recyclerView= findViewById(R.id.eventView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
 
-        getEventListData()
 
 
 
@@ -100,54 +103,47 @@ class LecDashboard : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val files = listOf(
+            Materials("Lesson 1", "CS201.3 Software Architecture", "materials/lesson1.pdf","click to download"),
+            Materials("Lesson 2", "SE201.3 Algorithm", "materials/lesson2.pdf","click to download"),
+            Materials("Lesson 3", "CN201.3 Computer Network", "materials/lesson3.pdf","click to download"),
+            Materials("Lesson 4", "MS201.3 Systems", "materials/lesson4.pdf","click to download"),
+            Materials("Lesson 5", "SE301.3 Mobile Application", "materials/lesson5.pdf","click to download"),
+            Materials("Lesson 1", "CS301.3  Mathematics", "materials/lesson6.pdf","click to download"),
+            Materials("Lesson 1", "CS201.3 Business Process", "materials/lesson7.pdf","click to download"),
+        )
+
+       val adapter = FileAdapter(files)
+        recyclerView.adapter = adapter
+
+        adapter.setItemClickListner(object :FileAdapter.onItemClickListner{
+            override fun onItemClick(position: Int) {
 
 
-
-
-    }
-
-
-    private fun getEventListData(){
-        eventRecyclerView.visibility = View.GONE
-
-        dbRef = FirebaseDatabase.getInstance().getReference("Modules")
-        dbRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                eventLst.clear()
-                if(snapshot.exists()){
-                    for(event in snapshot.children){
-                        val eventData = event.getValue(Modules::class.java)
-                        eventLst.add(eventData!!)
-                    }
-                    val eAdapter = EventAdapter(eventLst)
-                    eventRecyclerView.adapter = eAdapter
-
-                    eAdapter.setItemClickListner(object :EventAdapter.onItemClickListner{
-                        override fun onItemClick(position: Int) {
-                            val intent = Intent(this@LecDashboard,LecUploads::class.java)
-
-                            //add extras
-                            intent.putExtra("moduleId",eventLst[position].ID)
-                            intent.putExtra("Name",eventLst[position].Name)
-                            intent.putExtra("semester",eventLst[position].Sem)
-                            intent.putExtra("year",eventLst[position].Year)
-                            intent.putExtra("title",header.text.toString())
-                            intent.putExtra("name",username.text.toString())
-                            startActivity(intent)
-                        }
-
-                    })
-
-                    eventRecyclerView.visibility = View.VISIBLE
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                downloadFile("materials/lesson3.pdf")
             }
 
         })
+
+
     }
+
+    public fun downloadFile(filePath: String) {
+        var pd= ProgressDialog(this)
+        pd.setTitle("Downloading")
+        pd.show()
+        val storageRef = FirebaseStorage.getInstance().getReference()
+        var islandRef = storageRef.child("materials/lesson3.pdf")
+
+        val localFile = File.createTempFile("lesson1", "pdf")
+
+        islandRef.getFile(localFile).addOnSuccessListener {
+            // Local temp file has been created
+        }.addOnFailureListener {
+            // Handle any errors
+        }
+    }
+
 
 
 }

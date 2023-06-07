@@ -56,8 +56,8 @@ class LecSchedule : AppCompatActivity() {
         }
 
         materialsbtn.setOnClickListener {
-            val intent = Intent(this, LecDashboard::class.java)
-            intent.putExtra("title","Upload Lecture Materials")
+            val intent = Intent(this, LecMaterials::class.java)
+            intent.putExtra("title","Download Materials")
             intent.putExtra("name",name)
             startActivity(intent)
         }

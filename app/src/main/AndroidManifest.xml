@@ -27,6 +27,9 @@
         <activity
             android:name=".LecWeicome"
             android:exported="false" />
+        <activity
+            android:name=".LecMaterials"
+            android:exported="false"/>
 
         <activity
             android:name=".LecSchedule"
