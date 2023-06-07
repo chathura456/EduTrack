@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Common.SplashScreen"
+    android:background="#f2f5f8">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:orientation="vertical">
+       
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="?actionBarSize">
+
+           <ImageView
+               android:layout_width="64dp"
+               android:layout_height="match_parent"
+               android:layout_centerVertical="true"
+               android:padding="9dp"
+               android:src="@drawable/ic_general_back_foreground" />
+
+           <ImageView
+               android:layout_width="67dp"
+               android:layout_height="match_parent"
+               android:layout_alignParentRight="true"
+               android:layout_centerVertical="true"
+               android:padding="10dp"
+               android:src="@drawable/ic_general_search_foreground" />
+
+
+       </RelativeLayout>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:fontFamily="sans-serif-black"
+           android:padding="15dp"
+           android:text="Courses"
+           android:textAllCaps="true"
+           android:textSize="28sp"
+           android:layout_marginTop="-10dp"/>
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:background="@drawable/back_mad">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:fontFamily="sans-serif-medium"
+               android:padding="25dp"
+               android:text="Mobile Application Development"
+               android:textColor="#020202"
+               android:textSize="24sp" />
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:background="#00000000"
+               android:text="Show Lecture Materials"
+               android:padding="26dp"
+               android:textSize="12sp"
+               android:textColor="@color/black"
+               android:layout_alignParentBottom="true"/>
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:src="@drawable/mad"
+               android:layout_alignParentRight="true"/>
+
+
+
+       </RelativeLayout>
+
+
+
+
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:background="@drawable/back_db"
+           android:layout_marginTop="20dp">
+
+           <TextView
+               android:layout_width="297dp"
+               android:layout_height="wrap_content"
+               android:fontFamily="sans-serif-medium"
+               android:padding="25dp"
+               android:text="Web Application Development"
+               android:textColor="#FFFFFF"
+               android:textSize="24sp" />
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:background="#00000000"
+               android:padding="26dp"
+               android:text="Show Lecture Materials"
+               android:textColor="@color/white"
+               android:textSize="12sp" />
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:src="@drawable/db"
+               android:layout_alignParentRight="true"/>
+
+
+
+       </RelativeLayout>
+
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:background="@drawable/back_m"
+           android:layout_marginTop="20dp">
+
+           <TextView
+               android:layout_width="297dp"
+               android:layout_height="wrap_content"
+               android:fontFamily="sans-serif-medium"
+               android:padding="25dp"
+               android:text="Mathematics for Computing"
+               android:textColor="@color/black"
+               android:textSize="24sp" />
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:background="#00000000"
+               android:padding="26dp"
+               android:text="Show Lecture Materials"
+               android:textColor="@color/black"
+               android:textSize="12sp" />
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:src="@drawable/m"
+               android:layout_alignParentRight="true"/>
+
+
+
+       </RelativeLayout>
+
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:background="@drawable/back_ias"
+           android:layout_marginTop="20dp">
+
+           <TextView
+               android:layout_width="297dp"
+               android:layout_height="wrap_content"
+               android:fontFamily="sans-serif-medium"
+               android:padding="25dp"
+               android:text="Information Assurance and Security"
+               android:textColor="@color/white"
+               android:textSize="24sp" />
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:background="#00000000"
+               android:padding="26dp"
+               android:text="Show Lecture Materials"
+               android:textColor="@color/white"
+               android:textSize="12sp" />
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:src="@drawable/ias"
+               android:layout_alignParentRight="true"/>
+
+
+
+       </RelativeLayout>
+
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:background="@drawable/back_mad"
+           android:layout_marginTop="20dp">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:fontFamily="sans-serif-medium"
+               android:padding="25dp"
+               android:text="Mobile Application Development"
+               android:textColor="#020202"
+               android:textSize="24sp" />
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:background="#00000000"
+               android:text="Show Lecture Materials"
+               android:padding="26dp"
+               android:textSize="12sp"
+               android:textColor="@color/black"
+               android:layout_alignParentBottom="true"/>
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:src="@drawable/mad"
+               android:layout_alignParentRight="true"/>
+
+
+
+       </RelativeLayout>
+
+
+
+
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:background="@drawable/back_db"
+           android:layout_marginTop="20dp">
+
+           <TextView
+               android:layout_width="297dp"
+               android:layout_height="wrap_content"
+               android:fontFamily="sans-serif-medium"
+               android:padding="25dp"
+               android:text="Web Application Development"
+               android:textColor="#FFFFFF"
+               android:textSize="24sp" />
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:background="#00000000"
+               android:padding="26dp"
+               android:text="Show Lecture Materials"
+               android:textColor="@color/white"
+               android:textSize="12sp" />
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:src="@drawable/db"
+               android:layout_alignParentRight="true"/>
+
+
+
+       </RelativeLayout>
+
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:background="@drawable/back_m"
+           android:layout_marginTop="20dp">
+
+           <TextView
+               android:layout_width="297dp"
+               android:layout_height="wrap_content"
+               android:fontFamily="sans-serif-medium"
+               android:padding="25dp"
+               android:text="Mathematics for Computing"
+               android:textColor="@color/black"
+               android:textSize="24sp" />
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:background="#00000000"
+               android:padding="26dp"
+               android:text="Show Lecture Materials"
+               android:textColor="@color/black"
+               android:textSize="12sp" />
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:src="@drawable/m"
+               android:layout_alignParentRight="true"/>
+
+
+
+       </RelativeLayout>
+
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:background="@drawable/back_ias"
+           android:layout_marginTop="20dp">
+
+           <TextView
+               android:layout_width="297dp"
+               android:layout_height="wrap_content"
+               android:fontFamily="sans-serif-medium"
+               android:padding="25dp"
+               android:text="Information Assurance and Security"
+               android:textColor="@color/white"
+               android:textSize="24sp" />
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:background="#00000000"
+               android:padding="26dp"
+               android:text="Show Lecture Materials"
+               android:textColor="@color/white"
+               android:textSize="12sp" />
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:src="@drawable/ias"
+               android:layout_alignParentRight="true"/>
+
+
+
+       </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+   </LinearLayout>
+
+</ScrollView>
