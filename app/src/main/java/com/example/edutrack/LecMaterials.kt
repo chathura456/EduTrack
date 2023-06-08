@@ -1,6 +1,7 @@
 package com.example.edutrack
 
 import android.app.ProgressDialog
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,8 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 import java.util.ArrayList
+import android.util.Log
+import com.example.crudapp.MaterialAdapter
 
 class LecMaterials : AppCompatActivity() {
 
@@ -34,6 +37,7 @@ class LecMaterials : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var dbRef : DatabaseReference
+    private lateinit var modulelist : ArrayList<Materials>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,24 +107,25 @@ class LecMaterials : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val files = listOf(
+        val eventLst = listOf(
             Materials("Lesson 1", "CS201.3 Software Architecture", "materials/lesson1.pdf","click to download"),
-            Materials("Lesson 2", "SE201.3 Algorithm", "materials/lesson2.pdf","click to download"),
-            Materials("Lesson 3", "CN201.3 Computer Network", "materials/lesson3.pdf","click to download"),
-            Materials("Lesson 4", "MS201.3 Systems", "materials/lesson4.pdf","click to download"),
-            Materials("Lesson 5", "SE301.3 Mobile Application", "materials/lesson5.pdf","click to download"),
+            Materials("Lesson 2", "CS201.3 Software Architecture", "materials/lesson2.pdf","click to download"),
+            Materials("Lesson 3", "CS201.3 Software Architecture", "materials/lesson3.pdf","click to download"),
+            Materials("Lesson 1", "SE301.3 Mobile Application", "materials/lesson4.pdf","click to download"),
+            Materials("Lesson 2", "SE301.3 Mobile Application", "materials/lesson5.pdf","click to download"),
             Materials("Lesson 1", "CS301.3  Mathematics", "materials/lesson6.pdf","click to download"),
-            Materials("Lesson 1", "CS201.3 Business Process", "materials/lesson7.pdf","click to download"),
+            Materials("Lesson 2", "CS301.3  Mathematics", "materials/lesson7.pdf","click to download"),
+            Materials("Lesson 1", "SE201.3  ADBMS", "materials/lesson6.pdf","click to download"),
+            Materials("Lesson 2", "SE201.3  ADBMS", "materials/lesson7.pdf","click to download"),
         )
 
-       val adapter = FileAdapter(files)
-        recyclerView.adapter = adapter
+       val madapter = MaterialAdapter(eventLst)
+        recyclerView.adapter = madapter
 
-        adapter.setItemClickListner(object :FileAdapter.onItemClickListner{
+        madapter.setItemClickListner(object :MaterialAdapter.onItemClickListner{
             override fun onItemClick(position: Int) {
 
-
-                downloadFile("materials/lesson3.pdf")
+                downloadFile(eventLst[position].path.toString())
             }
 
         })
@@ -129,16 +134,21 @@ class LecMaterials : AppCompatActivity() {
     }
 
     public fun downloadFile(filePath: String) {
+        Toast.makeText(this, filePath, Toast.LENGTH_LONG)
+            .show()
         var pd= ProgressDialog(this)
         pd.setTitle("Downloading")
         pd.show()
         val storageRef = FirebaseStorage.getInstance().getReference()
-        var islandRef = storageRef.child("materials/lesson3.pdf")
 
-        val localFile = File.createTempFile("lesson1", "pdf")
+
+        var islandRef = storageRef.child(filePath)
+
+        val localFile = File.createTempFile("lessons", "pdf")
 
         islandRef.getFile(localFile).addOnSuccessListener {
             // Local temp file has been created
+            pd.dismiss()
         }.addOnFailureListener {
             // Handle any errors
         }
