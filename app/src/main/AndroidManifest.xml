@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EduTrack"
         tools:targetApi="31">
+
+        <activity
+            android:name=".LecExam"
+            android:exported="false" />
         <activity
             android:name=".StudentDashboard"
             android:exported="false" />
