@@ -24,6 +24,24 @@
         app:srcCompat="@drawable/ic_material" />
 
     <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="Add Marks/Upload Assignments"
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
+
+    <TextView
         android:textAlignment="center"
         android:id="@+id/evNamelbl"
         android:layout_width="384dp"

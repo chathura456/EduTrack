@@ -11,34 +11,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EduTrack"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".StudentDashboard"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".LecDashboard"
             android:exported="false" />
         <activity
             android:name=".LecUploads"
             android:exported="false" />
-
         <activity
             android:name=".LecWeicome"
             android:exported="false" />
         <activity
             android:name=".LecMaterials"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".LecSchedule"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

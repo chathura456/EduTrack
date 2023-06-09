@@ -7,40 +7,53 @@
 
     <!-- Upper bar for displaying lecture username and ID -->
     <!-- Upper bar for displaying lecture username and ID -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/upperBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/teal_700"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="5dp">
 
         <ImageView
-            android:layout_width="190dp"
-            android:layout_height="50dp"
-            android:src="@drawable/edutracklogo" />
-
-        <TextView
-            android:id="@+id/lectureUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="0dp"
-            android:text="Mike David"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
+            android:id="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.012"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow" />
 
         <ImageView
-            android:id="@+id/logoutbtn"
-            android:layout_width="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_width="150dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="right|center_vertical"
-            android:src="@drawable/logou" />
+            android:src="@drawable/edutracklogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.134"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-    </LinearLayout>
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:background="#63FFFFFF"
+            android:iconifiedByDefault="false"
+            android:queryHint="search.."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.936"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!-- Scrollable body with labels for adding semester modules -->
@@ -48,20 +61,18 @@
 
     <TextView
         android:id="@+id/header"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="144dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:layout_marginEnd="0dp"
         android:text="Lecture Schedules"
-        android:textSize="18sp"
-        android:textStyle="bold"
-       />
-
-
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <ScrollView
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="120dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:fadingEdge="none"
@@ -84,135 +95,4 @@
 
     </ScrollView>
 
-
-    <!-- Bottom navigation bar with buttons -->
-    <LinearLayout
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/editextstyle"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        >
-
-        <LinearLayout
-            android:id="@+id/modulebutton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:onClick="onHomeClicked">
-
-            <ImageView
-
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_module"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Modules"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/schedulebutton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:onClick="onModulesClicked">
-
-            <ImageView
-
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_schedule"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Schedule"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:onClick="onSchedulesClicked">
-
-            <ImageView
-                android:id="@+id/homebtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/adbutton"
-                 />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/materialsbutton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:onClick="onMaterialsClicked">
-
-            <ImageView
-
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_materials"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Materials"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/assingmentbutton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:onClick="onAssignmentMarksClicked">
-
-            <ImageView
-
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_assignment"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Assignments"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
-        </LinearLayout>
-    </LinearLayout>
 </RelativeLayout>

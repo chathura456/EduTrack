@@ -3,7 +3,6 @@ package com.example.edutrack
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.CalendarContract
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -11,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crudapp.EventAdapter
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
 
@@ -35,79 +33,31 @@ class LecDashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.lecture_home)
 
-
-
         eventRecyclerView = findViewById(R.id.eventView)
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
         eventRecyclerView.setHasFixedSize(true)
         eventLst = arrayListOf<Modules>()
 
-        getEventListData()
+        var type = intent.getStringExtra("type")
+        var userName = intent.getStringExtra("name")
+        getEventListData(type,intent.getStringExtra("title"), userName)
 
 
-
-        username = findViewById(R.id.lectureUsername)
-        modulebtn = findViewById(R.id.modulebutton)
-        schedulebtn = findViewById(R.id.schedulebutton)
-        materialsbtn = findViewById(R.id.materialsbutton)
-        assing = findViewById(R.id.assingmentbutton)
-        homebtn = findViewById(R.id.homebtn)
-        logoutbtn = findViewById(R.id.logoutbtn)
         header = findViewById(R.id.header)
 
-        username.text = intent.getStringExtra("name")
-        val name=intent.getStringExtra("name")
-
         header.text=intent.getStringExtra("title")
-
-        modulebtn.setOnClickListener {
-            val intent = Intent(this, LecDashboard::class.java)
-            intent.putExtra("title","Upload Lecture Modules")
-            intent.putExtra("name",name)
+        var backBtn = findViewById<ImageView>(R.id.imageView)
+        backBtn.setOnClickListener {
+            val intent = Intent(this, StudentDashboard::class.java)
+            intent.putExtra("name",userName)
+            intent.putExtra("type",type)
             startActivity(intent)
         }
-
-        schedulebtn.setOnClickListener {
-            val intent = Intent(this, LecSchedule::class.java)
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-        homebtn.setOnClickListener {
-            val intent = Intent(this, LecWeicome::class.java)
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-        materialsbtn.setOnClickListener {
-            val intent = Intent(this, LecMaterials::class.java)
-            intent.putExtra("title","Download Materials")
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-        assing.setOnClickListener {
-            val intent = Intent(this, LecDashboard::class.java)
-            intent.putExtra("title","Upload Assingments")
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-
-        logoutbtn.setOnClickListener{
-            FirebaseAuth.getInstance().signOut();
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
-
 
     }
 
 
-    private fun getEventListData(){
+    private fun getEventListData(type:String?,title:String?,userName:String?){
         eventRecyclerView.visibility = View.GONE
 
         dbRef = FirebaseDatabase.getInstance().getReference("Modules")
@@ -124,16 +74,46 @@ class LecDashboard : AppCompatActivity() {
 
                     eAdapter.setItemClickListner(object :EventAdapter.onItemClickListner{
                         override fun onItemClick(position: Int) {
-                            val intent = Intent(this@LecDashboard,LecUploads::class.java)
 
-                            //add extras
-                            intent.putExtra("moduleId",eventLst[position].ID)
-                            intent.putExtra("Name",eventLst[position].Name)
-                            intent.putExtra("semester",eventLst[position].Sem)
-                            intent.putExtra("year",eventLst[position].Year)
-                            intent.putExtra("title",header.text.toString())
-                            intent.putExtra("name",username.text.toString())
-                            startActivity(intent)
+                            if(type=="Student"){
+                                if(title!="Upcoming Assignments"){
+                                    val intent = Intent(this@LecDashboard, LecMaterials::class.java)
+                                    intent.putExtra("ModuleName",eventLst[position].Name)
+                                    intent.putExtra("title","Lecture Materials")
+                                    intent.putExtra("name",userName)
+                                    intent.putExtra("type",type)
+                                    startActivity(intent)
+                                }else{
+                                    val intent = Intent(this@LecDashboard, LecUploads::class.java)
+                                    intent.putExtra("title","Submit Assignments")
+                                    intent.putExtra("moduleId", eventLst[position].ID)
+                                    intent.putExtra("Name", eventLst[position].Name)
+                                    intent.putExtra("semester", eventLst[position].Sem)
+                                    intent.putExtra("year", eventLst[position].Year)
+                                    intent.putExtra("type",type)
+                                    intent.putExtra("name",userName)
+                                    startActivity(intent)
+                                }
+
+                            }else{
+
+                                val intent = Intent(this@LecDashboard,LecUploads::class.java)
+                                //add extras
+                                intent.putExtra("moduleId", eventLst[position].ID)
+                                intent.putExtra("Name", eventLst[position].Name)
+                                intent.putExtra("semester", eventLst[position].Sem)
+                                intent.putExtra("year", eventLst[position].Year)
+
+                                if(title=="Upload/View Assignments"){
+                                    intent.putExtra("title", "Add Marks/View Assignments")
+                                }else{
+                                    intent.putExtra("title", "Add Lecture Materials")
+                                }
+                                intent.putExtra("name",userName)
+                                intent.putExtra("type",type)
+                                startActivity(intent)
+                            }
+
                         }
 
                     })

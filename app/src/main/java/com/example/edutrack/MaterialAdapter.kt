@@ -1,4 +1,4 @@
-package com.example.crudapp
+package com.example.edutrack
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.edutrack.Materials
-import com.example.edutrack.Modules
-import com.example.edutrack.R
 import java.util.*
 
 class MaterialAdapter (private val eventList : List<Materials>) : RecyclerView.Adapter<MaterialAdapter.ViewHolder>(){
@@ -22,13 +19,13 @@ class MaterialAdapter (private val eventList : List<Materials>) : RecyclerView.A
         myListner = clickListner
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.module_viwer,parent,false)
         return ViewHolder(itemView, myListner)
     }
 
-    override fun onBindViewHolder(holder: MaterialAdapter.ViewHolder, position: Int) {
-        val photos: IntArray = intArrayOf(R.drawable.img01, R.drawable.img02,R.drawable.img03,R.drawable.img04,R.drawable.ic_maths)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val photos: IntArray = intArrayOf(R.drawable.pdf)
         val ran = Random()
         val i = ran.nextInt(photos.size)
         val currentEvent = eventList[position]

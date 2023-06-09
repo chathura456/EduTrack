@@ -35,17 +35,18 @@ class LecUploads : AppCompatActivity() {
         evtAssoc = findViewById(R.id.evAssoclbl)
         btnupload=findViewById(R.id.btnupload)
         btnback=findViewById(R.id.btn_back)
+        var title = findViewById<TextView>(R.id.titleText)
+        title.text = intent.getStringExtra("title")
 
         mStorage= FirebaseStorage.getInstance().getReference(intent.getStringExtra("moduleId").toString())
-
+        var type = intent.getStringExtra("type")
         setValuesToViews()
+        var userName = intent.getStringExtra("name")
 
         btnback.setOnClickListener{
-            val title=intent.getStringExtra("title").toString()
-            val name=intent.getStringExtra("name").toString()
-            val intent = Intent(this, LecDashboard::class.java)
-            intent.putExtra("title",title)
-            intent.putExtra("name",name)
+            val intent = Intent(this, StudentDashboard::class.java)
+            intent.putExtra("name",userName)
+            intent.putExtra("type",type)
             startActivity(intent)
         }
 

@@ -22,81 +22,51 @@ class LecSchedule : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
 
-
-
-
-        username = findViewById(R.id.lectureUsername)
-        modulebtn = findViewById(R.id.modulebutton)
-        schedulebtn = findViewById(R.id.schedulebutton)
-        materialsbtn = findViewById(R.id.materialsbutton)
-        assing = findViewById(R.id.assingmentbutton)
-        homebtn = findViewById(R.id.homebtn)
-        logoutbtn = findViewById(R.id.logoutbtn)
-
-        username.text = intent.getStringExtra("name")
-        val name=intent.getStringExtra("name")
-
-        modulebtn.setOnClickListener {
-            val intent = Intent(this, LecDashboard::class.java)
-            intent.putExtra("title","Upload Lecture Modules")
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-        schedulebtn.setOnClickListener {
-            val intent = Intent(this, LecSchedule::class.java)
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-        homebtn.setOnClickListener {
-            val intent = Intent(this, LecWeicome::class.java)
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-        materialsbtn.setOnClickListener {
-            val intent = Intent(this, LecMaterials::class.java)
-            intent.putExtra("title","Download Materials")
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-        assing.setOnClickListener {
-            val intent = Intent(this, LecDashboard::class.java)
-            intent.putExtra("title","Upload Assingments")
-            intent.putExtra("name",name)
-            startActivity(intent)
-        }
-
-
-        logoutbtn.setOnClickListener{
-            FirebaseAuth.getInstance().signOut();
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
         val tableLayout = findViewById<TableLayout>(R.id.tableLayout)
+        val title = findViewById<TextView>(R.id.titleText)
+        var type = intent.getStringExtra("type")
+        var userName = intent.getStringExtra("name")
+
+        var backBtn = findViewById<ImageView>(R.id.imageView)
+        var backBtn2 = findViewById<Button>(R.id.btn_back)
+        backBtn.setOnClickListener {
+            val intent = Intent(this, StudentDashboard::class.java)
+            intent.putExtra("name",userName)
+            intent.putExtra("type",type)
+            startActivity(intent)
+        }
+
+        backBtn2.setOnClickListener {
+            val intent = Intent(this, StudentDashboard::class.java)
+            intent.putExtra("name",userName)
+            intent.putExtra("type",type)
+            startActivity(intent)
+        }
 
         // Time slots
         val timeSlots = arrayOf(
-            "8:00 AM -\n9:00 AM\n", "9:00 AM -\n10:00 AM\n", "10:00 AM -\n11:00 AM\n",
-            "11:00 AM -\n12:00 PM\n", "12:00 PM -\n1:00 PM\n", "1:00 PM -\n2:00 PM\n"
+            "9:00 AM-\n11:00 AM\n", "11:00 AM-\n1:00 PM\n",
+            "12:00 AM-\n2:00 PM\n", "1:00 PM-\n3:00 PM\n", "2:00 PM-\n4:00 PM\n",
+            "3:00 PM-\n5:00 PM\n",
         )
 
-        // Subjects
-        val subjects = listOf("MAD", "Maths", "IAS", "Crypto", "Java", "SQA", "ITPM")
+        var subjects = listOf("MAD", "","Maths", "","IAS","", "Crypto","", "SQA", "ITPM", )
+        if(type=="Lecturer"){
+            title.text = "Lecturer's Schedule"
+           subjects = listOf("MAD", "Maths", "", "", "", "", "HCI", "")
+        }else{
+            title.text = "Year 03 Sem 01 Lecture Schedule"
+        }
 
         // Add table header
         val headerRow = TableRow(this)
         headerRow.addView(createTextView("Time", true))
-
-        for (i in 0 until 5) {
+        headerRow.setPadding(5,5,5,5)
+        for (i in 0 until 6) {
             val dayTextView = createTextView(getDayName(i), true)
             headerRow.addView(dayTextView)
             headerRow.setBackgroundResource(R.drawable.tablebackground)
+
         }
         tableLayout.addView(headerRow)
 

@@ -1,10 +1,12 @@
 package com.example.edutrack
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -39,17 +41,22 @@ class LoginActivity : AppCompatActivity() {
 
             database.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
                 if(it.exists()){
-                    val utype=it.child("Type").value
-                    val name=it.child("Name").value.toString()
+                    val utype=it.child("Type").value.toString().trim()
+                    val name=it.child("Name").value.toString().trim()
 
-                    if (utype.toString().trim()=="{Lecturer=}"){
-                        val intent= Intent(this,LecWeicome::class.java)
+                    if (utype=="{Lecturer=}"){
+                        val intent= Intent(this,StudentDashboard::class.java)
                         intent.putExtra("name",name)
+                        intent.putExtra("type","Lecturer")
                         startActivity(intent)
                     }
-                    else{
-                        Toast.makeText(this, "Welcome student page", Toast.LENGTH_LONG)
-                            .show()
+                    else {
+                        val intent= Intent(this,StudentDashboard::class.java)
+                        intent.putExtra("name",name)
+                        intent.putExtra("type","Student")
+                       // var year = it.child("Type").child("Student").child("year").value.toString()
+                      //  intent.putExtra("year",year)
+                        startActivity(intent)
                     }
                 }
                 else{
@@ -76,13 +83,17 @@ class LoginActivity : AppCompatActivity() {
                                 val name=it.child("Name").value.toString()
 
                                 if (utype.toString().trim()=="{Lecturer=}"){
-                                    val intent= Intent(this,LecWeicome::class.java)
+                                    val intent= Intent(this,StudentDashboard::class.java)
                                     intent.putExtra("name",name)
+                                    intent.putExtra("type","Lecturer")
                                     startActivity(intent)
                                 }
                                 else{
-                                    Toast.makeText(this, "Welcome student page", Toast.LENGTH_LONG)
-                                        .show()
+                                    //var year = it.child("Type").child("Student").child("year").value.toString()
+                                    val intent= Intent(this,StudentDashboard::class.java)
+                                    intent.putExtra("name",name)
+                                    intent.putExtra("type","Student")
+                                    startActivity(intent)
                                 }
                             }
                             else{

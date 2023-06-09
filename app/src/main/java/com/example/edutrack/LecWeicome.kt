@@ -8,7 +8,7 @@ import android.widget.*
 import com.example.crudapp.EventAdapter
 import com.google.firebase.auth.FirebaseAuth
 
-class LecWeicome : AppCompatActivity() {
+class LecWelcome : AppCompatActivity() {
 
     private lateinit var username: TextView
     private lateinit var modulebtn: LinearLayout
@@ -50,7 +50,7 @@ class LecWeicome : AppCompatActivity() {
         }
 
         homebtn.setOnClickListener {
-            val intent = Intent(this, LecWeicome::class.java)
+            //val intent = Intent(this, LecWeicome::class.java)
             intent.putExtra("name",name)
             startActivity(intent)
         }
