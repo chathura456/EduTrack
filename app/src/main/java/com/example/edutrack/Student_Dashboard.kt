@@ -67,6 +67,8 @@ class StudentDashboard : AppCompatActivity() {
 
         examinationBtn.setOnClickListener {
             val intent=Intent(this,LecExam::class.java)
+            intent.putExtra("name",userName)
+            intent.putExtra("type",type)
             startActivity(intent)
 
         }
