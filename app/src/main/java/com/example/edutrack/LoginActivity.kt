@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
@@ -32,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.email)
         val password = findViewById<EditText>(R.id.password)
         val btnsubmit=findViewById<Button>(R.id.btn_login)
+        val btnRegShortcut = findViewById<TextView>(R.id.regShortcut)
 
 
         firebaseAuth = FirebaseAuth.getInstance()
@@ -41,22 +43,26 @@ class LoginActivity : AppCompatActivity() {
 
             database.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
                 if(it.exists()){
-                    val utype=it.child("Type").value.toString().trim()
-                    val name=it.child("Name").value.toString().trim()
-
-                    if (utype=="{Lecturer=}"){
+                    val utype=it.child("type").value.toString().trim()
+                    val name=it.child("name").value.toString().trim()
+                    Log.i(TAG, utype)
+                    if (utype=="Lecturer"){
                         val intent= Intent(this,StudentDashboard::class.java)
+
                         intent.putExtra("name",name)
                         intent.putExtra("type","Lecturer")
                         startActivity(intent)
                     }
-                    else {
+                    else if (utype=="Student") {
                         val intent= Intent(this,StudentDashboard::class.java)
-                        intent.putExtra("name",name)
+                       intent.putExtra("name",name)
                         intent.putExtra("type","Student")
                        // var year = it.child("Type").child("Student").child("year").value.toString()
                       //  intent.putExtra("year",year)
                         startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(this, utype, Toast.LENGTH_SHORT).show()
                     }
                 }
                 else{
@@ -71,18 +77,23 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+        btnRegShortcut.setOnClickListener {
+            val intent= Intent(this,RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
         btnsubmit.setOnClickListener {
             if (email.text.toString().trim().isNotEmpty()&&password.text.toString().trim().isNotEmpty())
-                firebaseAuth.signInWithEmailAndPassword(email.text.toString().trim(),password.text.toString().trim()).addOnCompleteListener{
+                firebaseAuth.signInWithEmailAndPassword(email.text.toString().trim(),password.text.toString().trim()).addOnCompleteListener{ it ->
                     if(it.isSuccessful){
                         database= FirebaseDatabase.getInstance().getReference("Users")
 
                         database.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener {
                             if(it.exists()){
-                                val utype=it.child("Type").value
-                                val name=it.child("Name").value.toString()
+                                val utype=it.child("type").value
+                                val name=it.child("name").value.toString()
 
-                                if (utype.toString().trim()=="{Lecturer=}"){
+                                if (utype=="Lecturer"){
                                     val intent= Intent(this,StudentDashboard::class.java)
                                     intent.putExtra("name",name)
                                     intent.putExtra("type","Lecturer")
